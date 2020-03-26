@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-
+import './homepage.style.scss';
 
 export const HomePage: FunctionComponent = () => (
   <div className="homepage">
