@@ -6,6 +6,9 @@
   height: 40vmin;
   pointer-events: none;
 }
+body {
+  font-family: 'Open Sans Condensed';
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

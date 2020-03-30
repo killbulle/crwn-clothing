@@ -1,27 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import './homepage.style.scss';
+import Directory from '../components/Directory';
 
 export const HomePage: FunctionComponent = () => (
   <div className="homepage">
-    <div className="directory-menu" />
-    <div className="menu-item">
-      <div className="content">
-        <h1>HATS</h1>
-        <span className="subtitle">SHOP NOW</span>
-      </div>
-    </div>
-    <div className="menu-item">
-      <div className="content">
-        <h1>JEAN</h1>
-        <span className="subtitle">SHOP NOW</span>
-      </div>
-    </div>
-    <div className="menu-item">
-      <div className="content">
-        <h1>HATS</h1>
-        <span className="subtitle">SHOP NOW</span>
-      </div>
-    </div>
+    <Directory />
   </div>
 );
 
