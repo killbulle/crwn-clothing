@@ -1,20 +1,25 @@
 import React, { FunctionComponent } from 'react';
 import './menu_item.styles.scss';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-interface OwnProps {
+
+interface OwnProps extends RouteComponentProps {
     title: string,
     imageUrl: string
     size?: string
+    linkUrl: string
 }
 
 type Props = OwnProps; // comprende pourquoi on passe d'un type a une interface
 
-const MenuItem: FunctionComponent<Props> = (props: OwnProps) => (
-  <div className={`${props.size ? props.size : ''} menu-item`}>
+const MenuItem: FunctionComponent<Props> = ({
+  size, imageUrl, title, history, match, linkUrl,
+}: OwnProps) => (
+  <div className={`${size || ''} menu-item`} onClick={() => history.push(`${match.url}${linkUrl}`)}>
     <div
       className="background-image"
       style={{
-        backgroundImage: `url(${props.imageUrl}`,
+        backgroundImage: `url(${imageUrl}`,
       }}
     />
 
@@ -25,10 +30,10 @@ const MenuItem: FunctionComponent<Props> = (props: OwnProps) => (
         className="title"
       >
         {' '}
-        {props.title.toUpperCase()}
+        {title.toUpperCase()}
       </h1>
       <span className="subtitle">SHOP NOW</span>
     </div>
   </div>
 );
-export default MenuItem;
+export default withRouter(MenuItem);
