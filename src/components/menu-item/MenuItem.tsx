@@ -23,12 +23,8 @@ const MenuItem: FunctionComponent<Props> = ({
       }}
     />
 
-    <div
-      className="content"
-    >
-      <h1
-        className="title"
-      >
+    <div className="content">
+      <h1 className="title">
         {' '}
         {title.toUpperCase()}
       </h1>
