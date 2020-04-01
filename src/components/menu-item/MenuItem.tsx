@@ -15,7 +15,12 @@ type Props = OwnProps; // comprende pourquoi on passe d'un type a une interface
 const MenuItem: FunctionComponent<Props> = ({
   size, imageUrl, title, history, match, linkUrl,
 }: OwnProps) => (
-  <div className={`${size || ''} menu-item`} onClick={() => history.push(`${match.url}${linkUrl}`)}>
+  <div
+    role="link"
+    className={`${size || ''} menu-item`}
+    onClick={() => history.push(`${match.url}${linkUrl}`)}
+    onKeyDown={() => history.push(`${match.url}${linkUrl}`)}
+  >
     <div
       className="background-image"
       style={{

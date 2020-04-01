@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
-import { Item } from '../../pages/Item';
+import React from 'react';
 import './collection.item.style.scss';
+import { Item } from '../../pages/Item';
 
 
 type Props = Item;
 
-const CollectionItem: FC<Props> = ({ name, price, imageUrl }: Item) => (
+export const CollectionItem = ({ name, price, imageUrl }: Item) => (
   <div className="collection-item">
     <div className="image" style={{ backgroundImage: `url(${imageUrl})` }} />
     <div className="collection-footer">

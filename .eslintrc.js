@@ -7,7 +7,14 @@ module.exports = {
             },
         },
     },
-
+    overrides: [
+        {
+            files: ['*.ts', '*.tsx'],
+            rules: {
+                '@typescript-eslint/no-unused-vars': [2, {args: 'none'}]
+            }
+        }
+    ],
 
     extends: [
         'plugin:react/recommended',
@@ -24,7 +31,14 @@ module.exports = {
         },
         ecmaVersion: 2018,
     },
+    env: {
+        "jest/globals": true,
+        "browser": true,
+        "node": true
+        
+    },
     plugins: [
+        'jest',
         'react',
         '@typescript-eslint',
     ],
@@ -38,6 +52,15 @@ module.exports = {
                 "ts": "never",
                 "tsx": "never"
             }
+        ],
+
+        "react/jsx-filename-extension": [1, {"extensions": [".tsx", ".jsx"]}],
+        'import/no-unresolved': [
+            'error',
+            {
+                'ignore': [ '\.svg' ]
+            }
         ]
+
     },
 };

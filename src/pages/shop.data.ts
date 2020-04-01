@@ -27,7 +27,7 @@ const SHOP_DATAS = [
         // imageUrl: 'https://i.ibb.co/QdJwgmp/brown-cowboy.png',
         imageUrl: '/images/shop-img/hats/brown-cowboy.png',
 
-        
+
         price: 35,
       },
       {

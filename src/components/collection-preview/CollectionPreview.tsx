@@ -10,7 +10,6 @@ interface OwnProps {
 
 type Props = OwnProps;
 
-
 const CollectionPreview = ({ shopData }: OwnProps) => (
   <div className="collection-preview">
     <h1 className="title">{shopData.title}</h1>

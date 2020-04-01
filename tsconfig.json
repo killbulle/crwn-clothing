@@ -22,6 +22,8 @@
     "jsx": "react"
   },
   "include": [
-    "src"
-  ]
+    "src/*/*"
+  ],"rules": {
+  "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+}
 }
