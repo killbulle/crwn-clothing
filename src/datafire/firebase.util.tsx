@@ -3,6 +3,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 import { config } from './firebase.config';
+import { ExtraData } from '../redux/User/User-types';
 
 
 firebase.initializeApp(config);
@@ -21,10 +22,6 @@ export async function signInWhithGoogle() {
 }
 
 export default firebase;
-
-export interface ExtraData {
-    displayName: string;
-}
 
 
 export async function createUserProfile(userAuth: firebase.User | null, data: ExtraData): Promise<firebase.firestore.DocumentReference
