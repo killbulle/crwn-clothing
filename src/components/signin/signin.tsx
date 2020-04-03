@@ -2,7 +2,7 @@ import React from 'react';
 import './signin.scss';
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
-import { signInWhithGoogle } from '../../firebase/firebase.util';
+import { signInWhithGoogle } from '../../datafire/firebase.util';
 
 type Props = {}
 type Ident = {
