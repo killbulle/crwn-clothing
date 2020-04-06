@@ -13,7 +13,7 @@ import Header from './components/header/header';
 import { auth, createUserProfile } from './datafire/firebase.util';
 import Signpage from './pages/SignPage/SignPage';
 import { ExtraData, UserState } from './redux/User/User-types';
-import { setCurrentUserCmd, SetUserAction } from './redux/User/action';
+import { createCurrentUserCmd, SetUserAction } from './redux/User/action';
 import { RootState } from './redux/root-reduces';
 
 type DispatchProps = {
@@ -26,7 +26,7 @@ type OwnProps = {
 
 }
 
-type Props = DispatchProps & Dispatch & OwnProps
+type Props = DispatchProps & OwnProps
 type DocRef = firebase.firestore.DocumentReference;
 
 class App extends React.Component<Props, UserState> {
@@ -86,10 +86,10 @@ class App extends React.Component<Props, UserState> {
 
 const mapRootStateToProps = (state: RootState): OwnProps => ({ currentUser: state.user });
 
+
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setCurrentUser: (user: UserState) => {
-    dispatch(setCurrentUserCmd(user));
-  },
-});
+  setCurrentUser: (user: UserState) => dispatch(createCurrentUserCmd(user)),
+
+} as DispatchProps);
 
 export default connect(mapRootStateToProps, mapDispatchToProps)(App);

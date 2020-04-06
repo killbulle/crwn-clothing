@@ -8,13 +8,12 @@ interface OwnProps {
     readonly shopData: Readonly<ShopData>;
 }
 
-type Props = OwnProps;
 
 const CollectionPreview = ({ shopData }: OwnProps) => (
   <div className="collection-preview">
     <h1 className="title">{shopData.title}</h1>
     <div className="preview">
-      {shopData.items.filter((item, idx) => idx < 4)
+      {shopData.items.filter((_item, idx) => idx < 4)
         .map((item: Item) => (
           <CollectionItem
             key={item.id}

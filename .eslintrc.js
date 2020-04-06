@@ -35,7 +35,7 @@ module.exports = {
         "jest/globals": true,
         "browser": true,
         "node": true
-        
+
     },
     plugins: [
         'jest',
@@ -43,6 +43,7 @@ module.exports = {
         '@typescript-eslint',
     ],
     rules: {
+        "no-unused-variable": [1, {"ignore-pattern": ["^_"], "ignore-decorated": true}],
         "import/extensions": [
             "error",
             "ignorePackages",
@@ -58,7 +59,7 @@ module.exports = {
         'import/no-unresolved': [
             'error',
             {
-                'ignore': [ '\.svg' ]
+                'ignore': ['\.svg']
             }
         ]
 

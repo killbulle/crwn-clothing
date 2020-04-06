@@ -16,7 +16,7 @@ export type UnSetUserAction = {
 }
 
 // on fabrique la commande type
-export const setCurrentUserCmd = (userAuth: UserState): SetUserAction => ({
+export const createCurrentUserCmd = (userAuth: UserState): SetUserAction => ({
   type: SET_USER,
   payload: userAuth,
 });

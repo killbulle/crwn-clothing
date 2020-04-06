@@ -3,8 +3,6 @@ import './collection.item.style.scss';
 import { Item } from '../../pages/Item';
 
 
-type Props = Item;
-
 export const CollectionItem = ({ name, price, imageUrl }: Item) => (
   <div className="collection-item">
     <div className="image" style={{ backgroundImage: `url(${imageUrl})` }} />

@@ -5,17 +5,24 @@ import { connect, DispatchProp } from 'react-redux';
 import { auth } from '../../datafire/firebase.util';
 import { UserState } from '../../redux/User/User-types';
 import { RootState } from '../../redux/root-reduces';
-
+// @ts-ignore
+import { ReactComponent as Logo } from '../../assets/crown.svg';
+import CartComponent from '../CartComponent/CartIcon';
+import CartDropdown from '../cart-dropdown/cart-dropdown';
+import { CartState } from '../../redux/Cart/types';
 
 type Props = {
-    currentUser: UserState;
+    currentUser: UserState,
+    cartState: CartState,
 }
 
 // manque le type de dispatch
-export function Header({ currentUser, history }: Props & RouteComponentProps & DispatchProp) {
+export function Header({ cartState: { hidden }, currentUser, history }: Props & RouteComponentProps & DispatchProp) {
   return (
     <div className="header">
-      <Link className="logo-container" to="/" />
+      <Link className="logo-container" to="/">
+        <Logo />
+      </Link>
       <div className="options">
         <Link className="option" to="/shop">
           SHOP
@@ -45,12 +52,14 @@ export function Header({ currentUser, history }: Props & RouteComponentProps & D
             </div>
           )
           : <Link className="option" to="/signin">SIGNIN</Link>}
+        <CartComponent />
       </div>
+      {hidden ? <CartDropdown /> : ''}
     </div>
   );
 }
 
-const mapRootStateToProps = (state: RootState): Props => ({ currentUser: state.user });
+const mapStateToProps = ({ cart, user }: RootState): Props => ({ currentUser: user, cartState: cart });
 
 
-export default connect(mapRootStateToProps)(withRouter(Header));
+export default connect(mapStateToProps)(withRouter(Header));
