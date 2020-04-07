@@ -34,18 +34,12 @@ export function Header({ cartState: { hidden }, currentUser, history }: Props & 
           ? (
             <div
               className="option"
-              onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+              onClick={async (e: React.MouseEvent<HTMLDivElement>) => {
                 e.preventDefault();
                 e.persist();
                 console.log('cliked');
-
-                const promise = auth.signOut();
-                promise.then(() => {
-                  console.log('signout');
-                  history.push('/');
-                }).catch((error) => {
-                  console.log(error);
-                });
+                await auth.signOut();
+                history.push('/');
               }}
             >
               SIGN OUT

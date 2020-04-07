@@ -90,6 +90,6 @@ const mapRootStateToProps = (state: RootState): OwnProps => ({ currentUser: stat
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   setCurrentUser: (user: UserState) => dispatch(createCurrentUserCmd(user)),
 
-} as DispatchProps);
+});
 
 export default connect(mapRootStateToProps, mapDispatchToProps)(App);

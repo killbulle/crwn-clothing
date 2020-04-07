@@ -1,9 +1,14 @@
-import { AddToCardCmdAction, CartState } from './types';
+import { AddToCardCmd, ToggleCardCmd } from './types';
+import { Item } from '../../domain/Item';
+
 
 export enum CART_ACTIONS {
     TOGGLE = 'Cart/SET_DATA',
+    ADD_ITEM = 'Cart/ADD_ITEM'
 }
 
-const createCmdCart = (cart: CartState): AddToCardCmdAction => ({ type: CART_ACTIONS.TOGGLE, payload: cart });
-
-export default createCmdCart;
+export const createToogleCartCmd = (hidden: boolean): ToggleCardCmd => ({
+  type: CART_ACTIONS.TOGGLE,
+  payload: hidden,
+});
+export const createAddToCardCmd = (item: Item): AddToCardCmd => ({ type: CART_ACTIONS.ADD_ITEM, payload: item });

@@ -6,14 +6,16 @@ import './CustomButton.scss';
 
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    googlesign?: true
+    googlesign?: true,
+    inverted?: true
 }
 
-type Props = {};
-export const CustomButton = ({ googlesign, children, ...props }: IProps) => (
+export const CustomButton = ({
+  inverted, googlesign, children, ...props
+}: IProps) => (
   <button
     type="button"
-    className={`${googlesign ? 'google-sign-in' : ''} custom-button`}
+    className={`${inverted ? 'inverted' : ''}  ${googlesign ? 'google-sign-in' : ''} custom-button`}
     {...props}
   >
     {children}

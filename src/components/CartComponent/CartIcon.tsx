@@ -3,20 +3,22 @@ import './_CartIcon.scss';
 
 import { connect } from 'react-redux';
 // @ts-ignore
-import { Dispatch } from 'redux';
 import { ReactComponent as Cart } from '../../assets/cart.svg';
-import { AddToCardCmdAction, CartState } from '../../redux/Cart/types';
-import createCmdCart from '../../redux/Cart/action';
+import { Dispatch } from 'redux';
+
+
+import { CartState, ToggleCardCmd } from '../../redux/Cart/types';
+import { createToogleCartCmd } from '../../redux/Cart/action';
 
 
 type DispatchProps = {
-    setCartState: (cart: CartState) => AddToCardCmdAction;
+    setCartState: (cart: CartState) => ToggleCardCmd;
 }
 
 type Props = {} & DispatchProps
 
 const CartIcon = (props: Props) => (
-  <div className="cart-icon" onClick={() => props.setCartState({ hidden: true })}>
+  <div className="cart-icon" onClick={() => props.setCartState({ hidden: true, cartItems: [] })}>
     <Cart className="shopping-icon" />
     <span className="item-count">O</span>
   </div>
@@ -24,7 +26,7 @@ const CartIcon = (props: Props) => (
 
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setCartState: (cart: CartState) => dispatch(createCmdCart(cart)),
+  setCartState: (cart: CartState) => dispatch(createToogleCartCmd(cart.hidden)),
 });
 
 

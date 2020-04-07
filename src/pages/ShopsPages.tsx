@@ -1,6 +1,6 @@
 import React from 'react';
-import SHOP_DATA from './shop.data';
-import { ShopData } from './ShopData';
+import SHOP_DATA from '../domain/shop.data';
+import { ShopData } from '../domain/ShopData';
 import CollectionPreview from '../components/collection-preview/CollectionPreview';
 
 interface OwnProps {

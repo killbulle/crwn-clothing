@@ -1,7 +1,7 @@
 import React from 'react';
-import { ShopData } from '../../pages/ShopData';
+import { ShopData } from '../../domain/ShopData';
 import './collection-preview.style.scss';
-import { Item } from '../../pages/Item';
+import { Item } from '../../domain/Item';
 import CollectionItem from '../collection-item/CollectionItem';
 
 interface OwnProps {
