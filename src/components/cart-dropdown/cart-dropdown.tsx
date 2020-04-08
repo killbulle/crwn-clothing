@@ -1,37 +1,53 @@
 import React from 'react';
 import './_cart-dropdown.scss';
-import { connect } from 'react-redux';
+import { connect, DispatchProp } from 'react-redux';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
 import CustomButton from '../CustomButton/CustomButton';
-import { RootState } from '../../redux/root-reduces';
 import { Item } from '../../domain/Item';
-import CartItemCompnoent from '../CarItemComponent/CarItemComponent';
+import CartItemComponent from '../CarItemComponent/CarItemComponent';
+import { RootState } from '../../redux/root-reduces';
+import { createToogleCartCmd } from '../../redux/Cart/action';
+import { selectCarItems } from '../../redux/Cart/cartSelector.';
 
 interface Props {
     items: Map<Item, number>;
 }
 
 
-const CartDropdown = (props: Props) => {
+const CartDropdown = (props: Props & RouteComponentProps & DispatchProp) => {
   const items = Array.from(props.items.keys());
+  const { push } = props.history;
+
+  function displayMap() {
+    return items.map((item) => (
+      <CartItemComponent
+        key={item.id}
+        item={item}
+        quantity={props.items.get(item)!}
+      />
+    ));
+  }
+
+
   return (
     <div className="cart-dropdown">
       <div className="cart-items">
-        {items.map((item) => (
-          <CartItemCompnoent
-            key={item.id}
-            item={item}
-            quantity={props.items.get(item)!}
-          />
-        ))}
-
+        {items.length === 0 ? (<span>Your cart is empty</span>) : displayMap()}
       </div>
 
-      <CustomButton>GO TO CHECKOUT</CustomButton>
+      <CustomButton onClick={() => {
+        push('/checkout');
+        props.dispatch(createToogleCartCmd(true));
+      }}
+      >
+        GO TO CHECKOUT
+      </CustomButton>
     </div>
   );
 };
 
 
-const mapRootStateToProps = (state: RootState): Props => ({ items: state.cart.cartItems } as Props);
+const mapRootStateToProps = createStructuredSelector<RootState, Props>({ items: selectCarItems });
 
-export default connect(mapRootStateToProps, null)(CartDropdown);
+export default withRouter(connect(mapRootStateToProps)(CartDropdown));

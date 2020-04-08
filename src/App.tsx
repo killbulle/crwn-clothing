@@ -7,6 +7,7 @@ import 'firebase/auth';
 import { Unsubscribe } from 'firebase';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import { createStructuredSelector } from 'reselect';
 import HomePage from './pages/homepage-component';
 import ShopsPages from './pages/ShopsPages';
 import Header from './components/header/header';
@@ -15,6 +16,8 @@ import Signpage from './pages/SignPage/SignPage';
 import { ExtraData, UserState } from './redux/User/User-types';
 import { createCurrentUserCmd, SetUserAction } from './redux/User/action';
 import { RootState } from './redux/root-reduces';
+import { selectUser } from './redux/User/UserSelector';
+import Checkout from "./pages/checkout/checkout";
 
 type DispatchProps = {
     setCurrentUser: (user: UserState) => SetUserAction;
@@ -72,6 +75,7 @@ class App extends React.Component<Props, UserState> {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/shop" component={ShopsPages} />
+              <Route exact path="/checkout" component={Checkout} />
             <Route
               excat
               path="/signin"
@@ -84,7 +88,7 @@ class App extends React.Component<Props, UserState> {
     }
 }
 
-const mapRootStateToProps = (state: RootState): OwnProps => ({ currentUser: state.user });
+const mapRootStateToProps = createStructuredSelector<RootState, OwnProps>({ currentUser: selectUser });
 
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

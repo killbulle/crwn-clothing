@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Item } from '../../domain/Item';
 import CustomButton from '../CustomButton/CustomButton';
-import { createAddToCardCmd } from '../../redux/Cart/action';
-import { AddToCardCmd } from '../../redux/Cart/types';
+import { AddToCardCmd, createAddToCardCmd } from '../../redux/Cart/action';
 
 
 type Props = Item & DispatchProps;

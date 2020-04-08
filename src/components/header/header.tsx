@@ -2,6 +2,7 @@ import React from 'react';
 import './header.scss';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import { connect, DispatchProp } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import { auth } from '../../datafire/firebase.util';
 import { UserState } from '../../redux/User/User-types';
 import { RootState } from '../../redux/root-reduces';
@@ -9,15 +10,17 @@ import { RootState } from '../../redux/root-reduces';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import CartComponent from '../CartComponent/CartIcon';
 import CartDropdown from '../cart-dropdown/cart-dropdown';
-import { CartState } from '../../redux/Cart/types';
+import { selectUser } from '../../redux/User/UserSelector';
+import { selectCarHidden } from '../../redux/Cart/cartSelector.';
+
 
 type Props = {
     currentUser: UserState,
-    cartState: CartState,
+    hidden: boolean,
 }
 
 // manque le type de dispatch
-export function Header({ cartState: { hidden }, currentUser, history }: Props & RouteComponentProps & DispatchProp) {
+export function Header({ hidden, currentUser, history }: Props & RouteComponentProps & DispatchProp) {
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -53,7 +56,7 @@ export function Header({ cartState: { hidden }, currentUser, history }: Props & 
   );
 }
 
-const mapStateToProps = ({ cart, user }: RootState): Props => ({ currentUser: user, cartState: cart });
+const mapStateToProps = createStructuredSelector<RootState, Props>({ currentUser: selectUser, hidden: selectCarHidden });
 
 
 export default connect(mapStateToProps)(withRouter(Header));

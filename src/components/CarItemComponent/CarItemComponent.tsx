@@ -9,7 +9,7 @@ type Props = {
 }
 
 
-const CartItemCompnoent = ({ item: { imageUrl, name, price }, quantity }: Props) => (
+const CartItemComponent = ({ item: { imageUrl, name, price }, quantity }: Props) => (
   <div className="cart-item">
     <img src={imageUrl} alt="item" />
     <div className="item-details">
@@ -20,4 +20,4 @@ const CartItemCompnoent = ({ item: { imageUrl, name, price }, quantity }: Props)
 
 );
 
-export default CartItemCompnoent;
+export default CartItemComponent;
