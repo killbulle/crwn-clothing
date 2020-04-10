@@ -1,11 +1,11 @@
 import React from 'react';
-import { ShopData } from '../../domain/ShopData';
 import './collection-preview.style.scss';
-import { Item } from '../../domain/Item';
+import { Item } from '../../redux/ShopData/Item';
 import CollectionItem from '../collection-item/CollectionItem';
+import {Category} from '../../redux/ShopData/shopdata-action';
 
 interface OwnProps {
-    readonly shopData: Readonly<ShopData>;
+    readonly shopData: Readonly<Category>;
 }
 
 

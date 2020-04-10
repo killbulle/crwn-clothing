@@ -17,7 +17,7 @@ import { ExtraData, UserState } from './redux/User/User-types';
 import { createCurrentUserCmd, SetUserAction } from './redux/User/action';
 import { RootState } from './redux/root-reduces';
 import { selectUser } from './redux/User/UserSelector';
-import Checkout from "./pages/checkout/checkout";
+import Checkout from './pages/checkout/checkout';
 
 type DispatchProps = {
     setCurrentUser: (user: UserState) => SetUserAction;
@@ -75,7 +75,7 @@ class App extends React.Component<Props, UserState> {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/shop" component={ShopsPages} />
-              <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/checkout" component={Checkout} />
             <Route
               excat
               path="/signin"

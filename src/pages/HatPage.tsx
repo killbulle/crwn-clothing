@@ -5,6 +5,6 @@ interface OwnProps {
 
 type Props = OwnProps;
 
-const HatPage: FunctionComponent<Props> = () => (<div>Hat Page</div>);
+const HatPage: FunctionComponent<Props> = () => <div>Hat Page</div>;
 
 export default HatPage;

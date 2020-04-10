@@ -56,7 +56,7 @@ export function Header({ hidden, currentUser, history }: Props & RouteComponentP
   );
 }
 
-const mapStateToProps = createStructuredSelector<RootState, Props>({ currentUser: selectUser, hidden: selectCarHidden });
+const mapSTP = createStructuredSelector<RootState, Props>({ currentUser: selectUser, hidden: selectCarHidden });
 
 
-export default connect(mapStateToProps)(withRouter(Header));
+export default connect(mapSTP)(withRouter(Header));

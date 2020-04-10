@@ -2,7 +2,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-import { config } from './firebase.config';
+import config from './firebase.config';
 import { ExtraData } from '../redux/User/User-types';
 
 
@@ -23,12 +23,12 @@ export async function signInWhithGoogle() {
 
 export default firebase;
 
+type Dref = firebase.firestore.DocumentReference
 
-export async function createUserProfile(userAuth: firebase.User | null, data: ExtraData): Promise<firebase.firestore.DocumentReference
-    | void> {
+export async function createUserProfile(userAuth: firebase.User | null, data: ExtraData): Promise<Dref | void> {
   if (!userAuth) return;
   console.log(data);
-  const userRef: firebase.firestore.DocumentReference = store.doc(`users/${userAuth.uid}`);
+  const userRef: Dref = store.doc(`users/${userAuth.uid}`);
   const snapshot: firebase.firestore.DocumentSnapshot = await userRef.get();
   if (!snapshot.exists) {
     const { email, displayName } = userAuth;

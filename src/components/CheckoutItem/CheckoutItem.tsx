@@ -2,7 +2,7 @@ import React from 'react';
 import './CheckoutItem.scss';
 import { Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { Item } from '../../domain/Item';
+import { Item } from '../../redux/ShopData/Item';
 import {
   CART_ACTIONS, createAddToCardCmd, createDecreateQuantityCmd, removeToCardCmd,
 } from '../../redux/Cart/action';
@@ -22,44 +22,42 @@ interface DispatchProps {
 
 const Checkoutitem = ({
   item: { imageUrl, name, price }, quantity, item, remove, reduce, add,
-}: Props & DispatchProps) => (
-  <div className="checkout-item">
-    <div className="image-container">
-      <img alt="item" src={imageUrl} />
-    </div>
-    <span className="name">{name}</span>
-    <span className="decrease" onClick={() => reduce(item)}>{'<'}</span>
-    <span className="quantity">
-      {quantity}
-      {' '}
-    </span>
-    <span className="increase" onClick={() => add(item)}>
-      {' '}
-      {'>'}
-    </span>
-    <span className="price">
-      {' '}
-      {price}
-      {' '}
-    </span>
-    <div
-      className="remove-button"
-      onClick={(event) => {
-        remove(item);
-        alert('click');
-      }}
-    >
-      &#10005;
-    </div>
-
+}: Props & DispatchProps) => <div className="checkout-item">
+  <div className="image-container">
+    <img alt="item" src={imageUrl} />
   </div>
-);
+  <span className="name">{name}</span>
+  <span className="decrease" onClick={() => reduce(item)}>{'<'}</span>
+  <span className="quantity">
+    {quantity}
+    {' '}
+  </span>
+  <span className="increase" onClick={() => add(item)}>
+    {' '}
+    {'>'}
+  </span>
+  <span className="price">
+    {' '}
+    {price}
+    {' '}
+  </span>
+  <div
+    className="remove-button"
+    onClick={() => {
+      remove(item);
+      alert('click');
+    }}
+  >
+    &#10005;
+  </div>
+
+</div>;
 
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  remove: (item: Item) => dispatch((removeToCardCmd(item))),
-  reduce: (item: Item) => dispatch((createDecreateQuantityCmd(item))),
-  add: (item: Item) => dispatch((createAddToCardCmd(item))),
+  remove: (item: Item) => dispatch(removeToCardCmd(item)),
+  reduce: (item: Item) => dispatch(createDecreateQuantityCmd(item)),
+  add: (item: Item) => dispatch(createAddToCardCmd(item)),
 
 });
 

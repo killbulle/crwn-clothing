@@ -1,5 +1,5 @@
 import React from 'react';
-import { Item } from '../../domain/Item';
+import { Item } from '../../redux/ShopData/Item';
 
 import './_CarItemComponent.scss';
 
@@ -17,7 +17,6 @@ const CartItemComponent = ({ item: { imageUrl, name, price }, quantity }: Props)
       <div className="price">{`${quantity} X ${price}$`}</div>
     </div>
   </div>
-
 );
 
 export default CartItemComponent;

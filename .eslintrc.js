@@ -30,6 +30,7 @@ module.exports = {
             jsx: true,
         },
         ecmaVersion: 2018,
+        sourceType: "module"
     },
     env: {
         "jest/globals": true,
@@ -43,7 +44,9 @@ module.exports = {
         '@typescript-eslint',
     ],
     rules: {
-        "no-unused-variable": [1, {"ignore-pattern": ["^_"], "ignore-decorated": true}],
+    //    "no-extra-parens": [2, "all"],
+        "max-len": [2, 120, 4, {"ignoreUrls": true}],
+       // "no-unused-variable": [1, {"ignore-pattern": ["^_"], "ignore-decorated": true}],
         "import/extensions": [
             "error",
             "ignorePackages",

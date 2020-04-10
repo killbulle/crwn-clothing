@@ -1,5 +1,6 @@
 import { Action } from 'redux';
-import { Item } from '../../domain/Item';
+import { Item } from '../ShopData/Item';
+
 
 export interface CartState {
     hidden: boolean,

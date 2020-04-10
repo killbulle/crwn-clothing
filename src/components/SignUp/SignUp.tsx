@@ -58,10 +58,10 @@ class SignUp extends React.Component<Props, SignUpState> {
 
       try {
         const userCredential: firebase.auth.UserCredential = await auth.createUserWithEmailAndPassword(email, password);
-        const user: firebase.firestore.DocumentReference<firebase.firestore.DocumentData> | void = await createUserProfile(userCredential.user, { displayName: displayname });
+        await createUserProfile(userCredential.user, { displayName: displayname });
         this.setState(this.initialState);
-      } catch (e) {
-        console.log(e);
+      } catch (error) {
+        console.log(error);
       }
     };
 

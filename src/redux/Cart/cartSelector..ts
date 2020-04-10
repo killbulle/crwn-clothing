@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect';
 import { RootState } from '../root-reduces';
-import { CartState } from './types';
-import { Item } from '../../domain/Item';
+import { Item } from '../ShopData/Item';
+import { CartState } from './action';
 
 
-export const selectCart = (state: RootState) => state.cart;
-export const selectCarHidden = createSelector([selectCart], ((cart: CartState) => cart.hidden));
-export const selectCarItems = createSelector([selectCart], ((cart: CartState) => cart.cartItems));
+export const selectCart = (state: RootState): CartState => state.cart;
+export const selectCarHidden = createSelector([selectCart], (cart: CartState) => cart.hidden);
+export const selectCarItems = createSelector([selectCart], (cart: CartState) => cart.cartItems);
 export const selectCarItemsCount = createSelector([selectCarItems], (items: Map<Item, number>) => {
   const numbers = Array.from(items.values());
   const elementsCount = numbers.reduce((a, b) => a + b, 0);

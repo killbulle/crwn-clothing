@@ -1,19 +1,16 @@
-import { ShopData } from './ShopData';
-import { Item } from './Item';
-
-const SHOP_DATAS = [
-  (<ShopData>{
+const SHOP_DATAS = {
+  hats: {
     id: 1,
     title: 'Hats',
     routeName: 'hats',
     items: [
-      (<Item>{
+      {
         id: 1,
         name: 'Brown Brim',
         // imageUrl: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
         imageUrl: '/images/shop-img/hats/brown-brim.png',
         price: 25,
-      }),
+      },
       {
         id: 2,
         name: 'Blue Beanie',
@@ -73,8 +70,8 @@ const SHOP_DATAS = [
         price: 16,
       },
     ],
-  }),
-  {
+  },
+  sneakers: {
     id: 2,
     title: 'Sneakers',
     routeName: 'sneakers',
@@ -137,7 +134,7 @@ const SHOP_DATAS = [
       },
     ],
   },
-  {
+  jackets: {
     id: 3,
     title: 'Jackets',
     routeName: 'jackets',
@@ -179,7 +176,7 @@ const SHOP_DATAS = [
       },
     ],
   },
-  {
+  womens: {
     id: 4,
     title: 'Womens',
     routeName: 'womens',
@@ -235,7 +232,7 @@ const SHOP_DATAS = [
       },
     ],
   },
-  {
+  mens: {
     id: 5,
     title: 'Mens',
     routeName: 'mens',
@@ -284,6 +281,6 @@ const SHOP_DATAS = [
       },
     ],
   },
-];
+};
 
 export default SHOP_DATAS;

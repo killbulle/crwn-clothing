@@ -5,7 +5,5 @@ interface OwnProps {
 
 type Props = OwnProps;
 
-const register = () => (
-  <div className="register" />
-);
+const register = () => <div className="register" />;
 export default register;

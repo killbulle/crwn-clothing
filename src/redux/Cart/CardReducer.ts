@@ -1,7 +1,7 @@
 import { CART_ACTIONS, CartCmd, CartState } from './action';
-import { Item } from '../../domain/Item';
+import { Item } from '../ShopData/Item';
 
-export const initialState: CartState = {
+export const initialCartState: CartState = {
   hidden: true,
   cartItems: new Map<Item, number>(),
 };
@@ -13,6 +13,7 @@ function addCartItemsAndCount(originalitems: Map<Item, number>, item: Item): Map
   } else {
     clone.set(item, 1);
   }
+
   return clone;
 }
 
@@ -40,7 +41,7 @@ function reduceQuantity(originalitems: Map<Item, number>, item: Item) {
   return clone;
 }
 
-export default function CartReducer(state = initialState, action: CartCmd): CartState {
+export default function CartReducer(state = initialCartState, action: CartCmd): CartState {
   switch (action.type) {
     case CART_ACTIONS.TOGGLE:
       return {

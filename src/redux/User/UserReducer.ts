@@ -1,12 +1,12 @@
 import { ExtraData, UserState } from './User-types';
 import { SET_USER, UNSET_USER, UserActionTypes } from './action';
 
-export const initialState: UserState = {
+export const initialUserState: UserState = {
   id: '',
   additionalData: {} as ExtraData,
 };
 
-export const UserReducer = (state: UserState = initialState, action: UserActionTypes): UserState => {
+export const UserReducer = (state: UserState = initialUserState, action: UserActionTypes): UserState => {
   console.log(`reducer enter${JSON.stringify(action)}`);
   console.log(`reducer enter${JSON.stringify(state)}`);
   switch (action.type) {
