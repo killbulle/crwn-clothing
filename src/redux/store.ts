@@ -1,8 +1,8 @@
 import { applyMiddleware, createStore } from 'redux';
 
-
 import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 import rootReducer from './root-reduces';
 import { CartState } from './Cart/action';
 import { Item } from './ShopData/Item';
@@ -39,13 +39,24 @@ function readFromLocalStorage(): CartState {
 }
 
 const preload = readFromLocalStorage();
-const midldelwares = [logger];
-const store = createStore(rootReducer, {
-  user: initialUserState,
-  cart: preload,
-}, composeWithDevTools(applyMiddleware(...midldelwares)));
-export default store;
 
+const midldelwares = [logger];
+
+if (process.env.NODE_ENV === 'development') {
+  midldelwares.push(logger);
+}
+
+midldelwares.push(thunk);
+
+const store = createStore(
+  rootReducer,
+  {
+    user: initialUserState,
+    cart: preload,
+  },
+  composeWithDevTools(applyMiddleware(...midldelwares))
+);
+export default store;
 
 store.subscribe(() => savelocalStorage(store.getState().cart));
 // @ts-ignore

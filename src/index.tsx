@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import App from './App';
 import store from './redux/store';
 
-
 // @ts-ignore
 
 ReactDOM.render(
@@ -18,5 +17,5 @@ ReactDOM.render(
     </Provider>
   </React.StrictMode>,
 
-  document.getElementById('root'),
+  document.getElementById('root')
 );

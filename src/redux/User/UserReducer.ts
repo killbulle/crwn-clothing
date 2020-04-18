@@ -6,7 +6,10 @@ export const initialUserState: UserState = {
   additionalData: {} as ExtraData,
 };
 
-export const UserReducer = (state: UserState = initialUserState, action: UserActionTypes): UserState => {
+export const UserReducer = (
+  state: UserState = initialUserState,
+  action: UserActionTypes
+): UserState => {
   console.log(`reducer enter${JSON.stringify(action)}`);
   console.log(`reducer enter${JSON.stringify(state)}`);
   switch (action.type) {

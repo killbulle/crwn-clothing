@@ -19,6 +19,8 @@ module.exports = {
     extends: [
         'plugin:react/recommended',
         'airbnb',
+        "prettier",
+        "prettier/react"
     ],
     globals: {
         Atomics: 'readonly',
@@ -44,9 +46,9 @@ module.exports = {
         '@typescript-eslint',
     ],
     rules: {
-    //    "no-extra-parens": [2, "all"],
+        //    "no-extra-parens": [2, "all"],
         "max-len": [2, 120, 4, {"ignoreUrls": true}],
-       // "no-unused-variable": [1, {"ignore-pattern": ["^_"], "ignore-decorated": true}],
+        // "no-unused-variable": [1, {"ignore-pattern": ["^_"], "ignore-decorated": true}],
         "import/extensions": [
             "error",
             "ignorePackages",
@@ -57,7 +59,7 @@ module.exports = {
                 "tsx": "never"
             }
         ],
-
+        "no-unused-vars": "off",
         "react/jsx-filename-extension": [1, {"extensions": [".tsx", ".jsx"]}],
         'import/no-unresolved': [
             'error',

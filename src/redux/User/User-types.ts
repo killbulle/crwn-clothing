@@ -1,11 +1,8 @@
-export type ExtraData =
-    {
-        displayName: string;
-    }
+export type ExtraData = {
+  displayName: string;
+};
 
-
-export type UserState =
-    {
-        id: string
-        additionalData: ExtraData
-    }
+export type UserState = {
+  id: string;
+  additionalData: ExtraData;
+};

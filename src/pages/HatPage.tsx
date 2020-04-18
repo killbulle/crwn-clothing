@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-interface OwnProps {
-}
+interface OwnProps {}
 
 type Props = OwnProps;
 

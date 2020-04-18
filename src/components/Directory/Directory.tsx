@@ -3,18 +3,17 @@ import React from 'react';
 import MenuItem from '../menu-item/MenuItem';
 
 type Section = {
-    title: string;
-    imageUrl: string;
-    id: number;
-    size?: string;
-    linkUrl: string;
-
-}
+  title: string;
+  imageUrl: string;
+  id: number;
+  size?: string;
+  linkUrl: string;
+};
 
 type DirectoryState = {
-    sections: Section[];
-}
-type Props = {}
+  sections: Section[];
+};
+type Props = {};
 
 class Directory extends React.Component<Props, DirectoryState> {
   constructor(props: Props) {
@@ -62,15 +61,8 @@ class Directory extends React.Component<Props, DirectoryState> {
     return (
       <div className="directory-menu">
         {sections.map((sec: Section) => (
-          <MenuItem
-            key={sec.id}
-            {...sec}
-          />
-        )
-
-
-
-        )}
+          <MenuItem key={sec.id} {...sec} />
+        ))}
       </div>
     );
   }

@@ -4,12 +4,14 @@ import { Item } from '../../redux/ShopData/Item';
 import './_CarItemComponent.scss';
 
 type Props = {
-    quantity: number,
-    item: Item,
-}
+  quantity: number;
+  item: Item;
+};
 
-
-const CartItemComponent = ({ item: { imageUrl, name, price }, quantity }: Props) => (
+const CartItemComponent = ({
+  item: { imageUrl, name, price },
+  quantity,
+}: Props) => (
   <div className="cart-item">
     <img src={imageUrl} alt="item" />
     <div className="item-details">

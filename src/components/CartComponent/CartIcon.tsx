@@ -9,32 +9,28 @@ import { RootState } from '../../redux/root-reduces';
 import { selectCarItemsCount } from '../../redux/Cart/cartSelector.';
 import { ReactComponent as Cart } from '../../assets/cart.svg';
 
-
 type DispatchProps = {
-    setCartState: () => ToggleCardCmd;
-}
+  setCartState: () => ToggleCardCmd;
+};
 type OwnProps = {
-    elementsCount: number
-}
+  elementsCount: number;
+};
 
-
-type Props = {} & DispatchProps & OwnProps
+type Props = {} & DispatchProps & OwnProps;
 
 const CartIcon = ({ elementsCount, setCartState }: Props) => (
   <div className="cart-icon" onClick={() => setCartState()}>
     <Cart className="shopping-icon" />
-    <span className="item-count">
-      {elementsCount}
-    </span>
+    <span className="item-count">{elementsCount}</span>
   </div>
 );
 
-const mapRootStateToProps = createStructuredSelector<RootState, OwnProps>({ elementsCount: selectCarItemsCount });
-
+const mapRootStateToProps = createStructuredSelector<RootState, OwnProps>({
+  elementsCount: selectCarItemsCount,
+});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   setCartState: () => dispatch(createToogleCartCmd()),
 });
-
 
 export default connect(mapRootStateToProps, mapDispatchToProps)(CartIcon);

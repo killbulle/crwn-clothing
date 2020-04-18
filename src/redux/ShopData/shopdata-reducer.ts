@@ -1,18 +1,41 @@
-import SHOP_DATAS from './shop.data';
-
-import { SHOPDATA_ACTIONS, ShopDataCmd, ShopDatasState } from './shopdata-action';
+import {
+  ShopData,
+  SHOPDATA_ACTIONS,
+  ShopAction,
+  ShopDatasState,
+} from './shopdata-action';
 
 const initialShopState = {
-  datas: SHOP_DATAS,
+  datas: {} as ShopData,
+  isLoading: false,
+  errorMessage: '',
 };
 
-
-const DataShopReducer = (state: ShopDatasState = initialShopState, action: ShopDataCmd): ShopDatasState => {
+const DataShopReducer = (
+  state: ShopDatasState = initialShopState,
+  action: ShopAction
+): ShopDatasState => {
   switch (action.type) {
-    case SHOPDATA_ACTIONS.GET_DATA:
+    case SHOPDATA_ACTIONS.FETCH_DATA_START: {
       return {
         ...state,
+        isLoading: true,
       };
+    }
+    case SHOPDATA_ACTIONS.FETCH_SUCCESS: {
+      return {
+        ...state,
+        datas: action.payload,
+        isLoading: false,
+      };
+    }
+    case SHOPDATA_ACTIONS.FETCH_FAILURE: {
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: action.payload,
+      };
+    }
     default:
       return state;
   }

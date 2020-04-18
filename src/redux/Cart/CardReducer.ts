@@ -6,7 +6,10 @@ export const initialCartState: CartState = {
   cartItems: new Map<Item, number>(),
 };
 
-function addCartItemsAndCount(originalitems: Map<Item, number>, item: Item): Map<Item, number> {
+function addCartItemsAndCount(
+  originalitems: Map<Item, number>,
+  item: Item
+): Map<Item, number> {
   const clone = new Map(originalitems);
   if (clone.has(item)) {
     clone.set(item, clone.get(item)! + 1);
@@ -17,8 +20,10 @@ function addCartItemsAndCount(originalitems: Map<Item, number>, item: Item): Map
   return clone;
 }
 
-
-function removeItem(originalitems: Map<Item, number>, item: Item): Map<Item, number> {
+function removeItem(
+  originalitems: Map<Item, number>,
+  item: Item
+): Map<Item, number> {
   console.log('removing item');
   const clone = new Map(originalitems);
   if (clone.has(item)) {
@@ -26,7 +31,6 @@ function removeItem(originalitems: Map<Item, number>, item: Item): Map<Item, num
   }
   return clone;
 }
-
 
 function reduceQuantity(originalitems: Map<Item, number>, item: Item) {
   const clone = new Map(originalitems);
@@ -41,7 +45,10 @@ function reduceQuantity(originalitems: Map<Item, number>, item: Item) {
   return clone;
 }
 
-export default function CartReducer(state = initialCartState, action: CartCmd): CartState {
+export default function CartReducer(
+  state = initialCartState,
+  action: CartCmd
+): CartState {
   switch (action.type) {
     case CART_ACTIONS.TOGGLE:
       return {

@@ -6,12 +6,9 @@ import { Item } from '../../redux/ShopData/Item';
 import CustomButton from '../CustomButton/CustomButton';
 import { AddToCardCmd, createAddToCardCmd } from '../../redux/Cart/action';
 
-
 type Props = DispatchProps & Item;
 const CollectionItem: React.FC<Props> = (props: Props) => {
-  const {
-    imageUrl, addToCart, price, name,
-  } = props;
+  const { imageUrl, addToCart, price, name } = props;
   return (
     <div className="collection-item">
       <div className="image" style={{ backgroundImage: `url(${imageUrl})` }} />
@@ -28,20 +25,16 @@ const CollectionItem: React.FC<Props> = (props: Props) => {
         ADD TO CART
       </CustomButton>
     </div>
-
   );
 };
 
-
 interface DispatchProps {
-    addToCart: (item: Item) => AddToCardCmd;
+  addToCart: (item: Item) => AddToCardCmd;
 }
 
-const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
-  addToCart: (item: Item) => dispatch(createAddToCardCmd(item)),
-} as DispatchProps
-
-
-);
-//FIX ME template
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
+  ({
+    addToCart: (item: Item) => dispatch(createAddToCardCmd(item)),
+  } as DispatchProps);
+// FIX ME template
 export default connect(null, mapDispatchToProps)(CollectionItem);

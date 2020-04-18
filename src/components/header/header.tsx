@@ -13,14 +13,17 @@ import CartDropdown from '../cart-dropdown/cart-dropdown';
 import { selectUser } from '../../redux/User/UserSelector';
 import { selectCarHidden } from '../../redux/Cart/cartSelector.';
 
-
 type Props = {
-    currentUser: UserState,
-    hidden: boolean,
-}
+  currentUser: UserState;
+  hidden: boolean;
+};
 
 // manque le type de dispatch
-export function Header({ hidden, currentUser, history }: Props & RouteComponentProps & DispatchProp) {
+export function Header({
+  hidden,
+  currentUser,
+  history,
+}: Props & RouteComponentProps & DispatchProp) {
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -33,22 +36,24 @@ export function Header({ hidden, currentUser, history }: Props & RouteComponentP
         <Link className="option" to="/shop">
           CONTACT
         </Link>
-        {currentUser.id.length !== 0
-          ? (
-            <div
-              className="option"
-              onClick={async (e: React.MouseEvent<HTMLDivElement>) => {
-                e.preventDefault();
-                e.persist();
-                console.log('cliked');
-                await auth.signOut();
-                history.push('/');
-              }}
-            >
-              SIGN OUT
-            </div>
-          )
-          : <Link className="option" to="/signin">SIGNIN</Link>}
+        {currentUser.id.length !== 0 ? (
+          <div
+            className="option"
+            onClick={async (e: React.MouseEvent<HTMLDivElement>) => {
+              e.preventDefault();
+              e.persist();
+              console.log('cliked');
+              await auth.signOut();
+              history.push('/');
+            }}
+          >
+            SIGN OUT
+          </div>
+        ) : (
+          <Link className="option" to="/signin">
+            SIGNIN
+          </Link>
+        )}
         <CartComponent />
       </div>
       {hidden ? <CartDropdown /> : ''}
@@ -56,7 +61,9 @@ export function Header({ hidden, currentUser, history }: Props & RouteComponentP
   );
 }
 
-const mapSTP = createStructuredSelector<RootState, Props>({ currentUser: selectUser, hidden: selectCarHidden });
-
+const mapSTP = createStructuredSelector<RootState, Props>({
+  currentUser: selectUser,
+  hidden: selectCarHidden,
+});
 
 export default connect(mapSTP)(withRouter(Header));

@@ -8,5 +8,4 @@ export const HomePage: FunctionComponent = () => (
   </div>
 );
 
-
 export default HomePage;

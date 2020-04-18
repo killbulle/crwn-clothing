@@ -8,46 +8,43 @@ import './CollectionPage.scss';
 import { Item } from '../../redux/ShopData/Item';
 import CollectionItem from '../../components/collection-item/CollectionItem';
 
-
 type Props = {
-    data: Category;
-}
+  data: Category | undefined;
+};
 
 interface MatchParams {
-    collectionId: string;
+  collectionId: string;
 }
 
-interface MatchProps extends RouteComponentProps<MatchParams> {
-}
+interface MatchProps extends RouteComponentProps<MatchParams> {}
 
 type CategoryParams = Props & MatchProps;
 
 function CollectionPage({ data }: CategoryParams) {
-  console.log(data.routeName);
-
   // @ts-ignore
+  if (!data) {
+    return <div className="collection-page" />;
+  }
   return (
     <div className="collection-page">
       <h2 className="title">{data.title}</h2>
       <div className="items">
-        {
-                    data.items.map((it: Item) => (
-                      <CollectionItem
-                        key={it.id}
-                        imageUrl={it.imageUrl}
-                        name={it.name}
-                        price={it.price}
-                        id={it.id}
-                      />
-                    ))
-                }
+        {data.items.map((it: Item) => (
+          <CollectionItem
+            key={it.id}
+            imageUrl={it.imageUrl}
+            name={it.name}
+            price={it.price}
+            id={it.id}
+          />
+        ))}
       </div>
     </div>
   );
 }
 
 const mapStateToProps = (state: RootState, props: CategoryParams) => ({
-  data: selectShopDataFilter(props.match.params.collectionId)(state)!, // FIXME the undefined
+  data: selectShopDataFilter(props.match.params.collectionId)(state),
 });
 
 export default connect(mapStateToProps)(CollectionPage);
